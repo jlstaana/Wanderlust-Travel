@@ -1,8 +1,16 @@
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center" 
-         style={{ background: "rgba(15, 143, 217, 0.6)" }}>
-      <div className="p-12 bg-white bg-opacity-90 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 max-w-2xl">
+    <div 
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat relative"
+      style={{ 
+        backgroundImage: `url('https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5b155bed5711a8176e9f9783/5c4fbe2246025317508def41/files/nepal-everest-base-camp-everest-travel-photo-20190128094442660-main-image.jpg')`
+      }}
+    >
+      {/* Overlay div for the blue tint */}
+      <div className="absolute inset-0" style={{ background: "rgba(15, 143, 217, 0.6)" }}></div>
+      
+      {/* Content div */}
+      <div className="p-12 bg-white bg-opacity-90 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 max-w-2xl z-10 relative">
         <h2 className="text-4xl font-bold mb-6 text-blue-600">
           Welcome to WanderLust!
         </h2>
