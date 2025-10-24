@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const destinations = [
   { 
@@ -28,6 +30,8 @@ export default function Destinations() {
   const backgroundImageUrl = "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&q=80";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const navigate = useNavigate();
+
 
   // Auto-play carousel
   useEffect(() => {
@@ -129,7 +133,10 @@ export default function Destinations() {
                         {"★".repeat(5)}
                       </div>
                     </div>
-                    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1">
+                    <button
+                     onClick={() => navigate("/booking", { state: { destination: d.name } })}
+                     className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1"
+                    >
                       Book Now
                     </button>
                   </div>

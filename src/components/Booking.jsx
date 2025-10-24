@@ -6,10 +6,30 @@ export default function Booking() {
   const navigate = useNavigate();
   const backgroundImageUrl = "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&q=80";
 
-  const onSubmit = (data) => {
-    localStorage.setItem("booking", JSON.stringify(data));
-    navigate("/payment");
-  };
+ const onSubmit = async (data) => {
+  try {
+    const response = await fetch("http://localhost/backend/api/bookings/create.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    if (response.ok) {
+      localStorage.setItem("booking", JSON.stringify(data));
+      navigate("/payment");
+    } else {
+      alert("Booking failed: " + (result.message || "Please try again."));
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error connecting to server.");
+  }
+}; 
 
   return (
     <div 

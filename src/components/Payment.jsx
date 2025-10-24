@@ -9,10 +9,40 @@ function CheckoutForm() {
   const booking = JSON.parse(localStorage.getItem("booking"));
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    alert(`Payment successful for ${booking.destination}!`);
+  e.preventDefault();
+
+  const paymentData = {
+    booking_email: booking?.email, 
+    amount:
+      booking?.destination === "paris"
+        ? 1200
+        : booking?.destination === "bali"
+        ? 1500
+        : booking?.destination === "newyork"
+        ? 1000
+        : 0,
+    method: "Stripe",
   };
 
+  console.log("Payment data being sent:", paymentData);
+
+  try {
+    const response = await fetch("http://localhost/backend/api/payments/create.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(paymentData),
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    alert(result.message);
+  } catch (error) {
+    console.error(error);
+    alert("Error connecting to payment server.");
+  }
+};
+  
   return (
     <form onSubmit={handleSubmit} className="p-6 max-w-md mx-auto space-y-4">
       <h2 className="text-2xl font-bold mb-2">Payment for {booking?.destination}</h2>
