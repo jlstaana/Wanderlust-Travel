@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Destinations from "./components/Destinations";
 import Booking from "./components/Booking";
 import Payment from "./components/Payment";
+import About from "./components/About";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   const backgroundImageUrl = "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&q=80";
   
@@ -25,9 +27,11 @@ export default function Home() {
           Explore amazing destinations and book your dream vacation today.
         </p>
         <div className="space-x-4">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
-            Start Exploring
-          </button>
+          <Link to="/destinations">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
+              Start Exploring
+            </button>
+          </Link>
           <button className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-3 px-6 rounded-full transition-colors duration-300">
             Learn More
           </button>
